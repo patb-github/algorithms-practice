@@ -16,9 +16,10 @@ public class BinarySearch {
 
         while (lo <= hi) 
         {
-            if (arr[mid].compareTo(key) == 0) return mid;
-            else if (arr[mid].compareTo(key) < 0) lo = mid + 1; // + 1 because index cannot be mid
-            else hi = mid - 1;                                  // - 1 because index cannot be mid                                
+            int cmp = arr[mid].compareTo(key);
+            if (cmp == 0) return mid;
+            else if (cmp < 0) lo = mid + 1;     // + 1 because index cannot be mid
+            else hi = mid - 1;                  // - 1 because index cannot be mid                                
             mid = (lo + hi) / 2;
         }
         return -1;
