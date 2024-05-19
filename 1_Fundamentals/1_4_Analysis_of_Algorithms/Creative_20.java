@@ -12,12 +12,12 @@ public class Creative_20 {
         int hi = arr.length - 1;
         int mid = (lo + hi + 1) / 2;    // +1 because we will access mid - 1; for when array has length 2
 
-        while (lo < hi) 
+        while (lo < hi)  
         {
             // lo will always be on the increasing part, and hi will always be on the decreasing part
             if (arr[mid - 1] < arr[mid]) lo = mid;          // arr[mid] could be the max, so we cannot set lo = mid + 1 
             else hi = mid - 1;                              // arr[mid] cannot be the max, so we can set hi = mid - 1                            
-            mid = ((lo + hi) / 2);
+            mid = ((lo + hi + 1) / 2);
         }
         return mid;
     }
