@@ -19,4 +19,4 @@ To prove the statement "The permutation can be generated if and only if the stac
 ## Running Time Analysis
 The worst-case running time of the first algorithm is linear in the length of the input sequence. We iterate through the whole sequence if there is no underflow, less so if the stack underflows.
 
-Using the stack pop/push operations as the cost mmodel, the worst-case running time of the second algorithm is linear in the length of the permutation. Given a permutation of length N, we push N times (for the digits 0, 1, ..., N - 1) and pop at most N times (for valid permutations). In total, at most 2N stack operations are performed.
+Using the stack pop/push operations as the cost model, the worst-case running time of the second algorithm is linear in the length of the permutation. Given a permutation of length N, we push N times (for the digits 0, 1, ..., N - 1) and pop at most N times (for valid permutations). In total, at most 2N stack operations are performed.
