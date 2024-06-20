@@ -1,5 +1,8 @@
 import java.util.ArrayList;
-
+/*
+ * Graph implmentation using an array of lists.
+ * Parallel edges and self-loops are allowed.
+ */
 public class Graph {
 
     private final int V;
