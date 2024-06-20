@@ -40,6 +40,11 @@ public class Graph {
         return adjacencyList[v]; 
     }
 
+    public int numAdjVertices(int v) {
+        validateVertex(v);
+        return adjacencyList[v].size(); 
+    }
+
     public String toString() {
         StringBuilder output = new StringBuilder();
         output.append(this.V + " vertices, " + this.E + " edges\n");
