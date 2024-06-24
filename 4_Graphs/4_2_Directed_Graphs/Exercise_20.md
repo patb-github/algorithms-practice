@@ -7,9 +7,9 @@ Definitions for **depth-first orders**: Depth-first search search visits each ve
 - **Postorder**: Put the vertex on a queue after the recursive calls.
 - **Reverse postorder**: Put the vertex on a stack after the recursive calls.
 
-Consider the simple cyclic digraph with two vertices and one edge: 0 → 1 and 1 → 0.
+Consider the simple cyclic digraph with two vertices and two edges: 0 → 1 and 1 → 0.
 
-Part 1: The reverse of the digraph is the same digraph. dfs(1) is called by dfs(0), so we push 1 and 0 on the stack in that order. Therefore, the reverse postorder is 0 1.
+Part 1: The reverse of this digraph is the same digraph. dfs(1) is called by dfs(0), so we push 1 and 0 onto the stack in that order. Therefore, the reverse postorder is 0 1.
 
 Part 2: Since dfs(1) is called by dfs(0), the postorder of the digraph is 1 0. 
 
