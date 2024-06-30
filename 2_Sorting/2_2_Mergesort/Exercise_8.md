@@ -14,4 +14,6 @@ For N ≥ 2, the number of compares satisfies C(N) = C(⌊N/2⌋) + C(N − ⌊N
 
 Therefore, the number of compares is linear.
 
-Note: in the inductive step, we assumed that 1 ≤ ⌊N/2⌋ ≤ N − 1 and 1 ≤ N − ⌊N/2⌋ ≤ N − 1.  
+Note: in the inductive step, we assumed that 1 ≤ ⌊N/2⌋ ≤ N − 1 and 1 ≤ N − ⌊N/2⌋ ≤ N − 1 for N ≥ 2. This can be shown as follows:
+
+Since (N/2) − 1 < ⌊N/2⌋ ≤ N/2 and N ≥ 2, we get 0 < ⌊N/2⌋, and since N/2 < N for positive N, we have ⌊N/2⌋ < N, so 1 ≤ ⌊N/2⌋ ≤ N − 1. It immediately follows that 1 ≤ N − ⌊N/2⌋ ≤ N − 1.
