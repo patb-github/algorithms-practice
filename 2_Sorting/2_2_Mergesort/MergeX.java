@@ -1,10 +1,36 @@
+/*
+ * Creative Problem 11. Write a program MergeX.java that implements 
+ * the three improvements to mergesort that are described in the text: 
+ * 1) add a cutoff from small subarrays, 
+ * 2) test whether the array is already in order, and
+ * 3) avoid the copy by switching arguments in the recursive code.
+ */
+
 public class MergeX {
 
+    private static int CUTOFF = 7;
     private MergeX() {};
+
+    private static void insertionSort(Comparable[] a, int lo, int hi) {
+        for (int i = lo + 1; i <= hi; i++) {
+            int k = i;
+            while (k > lo && a[k].compareTo(a[k - 1]) < 0) {
+                // swap a[k] and a[k - 1]
+                Comparable t = a[k];
+                a[k] = a[k - 1];
+                a[k - 1] = t;
+                k--;
+            }
+        }
+    }
 
     private static void merge(Comparable[] dest, Comparable[] aux, int lo, int mid, int hi) {
         // dest[lo] ... dest[mid] is sorted
         // dest[mid+1] ... dest[hi] is sorted
+
+        // Optimization: Check if subarrays are already in order
+        if (dest[mid].compareTo(dest[mid + 1]) <= 0) return;
+
         for (int i = lo; i <= hi; i++) aux[i] = dest[i];
 
         int left = lo;
@@ -24,7 +50,11 @@ public class MergeX {
     }
 
     private static void sort(Comparable[] a, Comparable[] aux, int lo, int hi) {
-        if (lo >= hi) return;
+        // Optimization: Use insertion sort at cutoff
+        if (hi - lo + 1 <= CUTOFF) {
+            insertionSort(a, lo, hi);
+            return;
+        }
 
         int mid = (lo + hi) / 2;
         sort(a, aux, lo, mid);
