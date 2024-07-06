@@ -28,11 +28,6 @@ public class MergeX {
         // dest[lo] ... dest[mid] is sorted
         // dest[mid+1] ... dest[hi] is sorted
 
-        // Optimization: Check if subarrays are already in order
-        if (dest[mid].compareTo(dest[mid + 1]) <= 0) return;
-
-        for (int i = lo; i <= hi; i++) aux[i] = dest[i];
-
         int left = lo;
         int right = mid + 1;
         int i = lo;
@@ -50,20 +45,24 @@ public class MergeX {
     }
 
     private static void sort(Comparable[] a, Comparable[] aux, int lo, int hi) {
-        // Optimization: Use insertion sort at cutoff
+        // Optimization 1: Use insertion sort at cutoff
         if (hi - lo + 1 <= CUTOFF) {
             insertionSort(a, lo, hi);
             return;
         }
 
         int mid = (lo + hi) / 2;
-        sort(a, aux, lo, mid);
-        sort(a, aux, mid + 1, hi);
+        sort(aux, a, lo, mid);      // swapped aux and a
+        sort(aux, a, mid + 1, hi);  // swapped aux and a
+        // Optimization 2: Check if subarrays are already in order
+        if (a[mid].compareTo(a[mid + 1]) <= 0) return;
         merge(a, aux, lo, mid, hi);
     } 
 
     public static void sort(Comparable[] a) {
         Comparable[] aux = new Comparable[a.length];
+        // Optimization: Copy array for optimization 3
+        for (int i = 0; i < a.length; i++) aux[i] = a[i];
         sort(a, aux, 0, a.length - 1);
     }
 
