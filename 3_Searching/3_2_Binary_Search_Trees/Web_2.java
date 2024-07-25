@@ -24,12 +24,6 @@ public class Web_2 {
         // Constructs the bst from the preorder traversal
         public ReconstructedBST(Iterable<Key> preorder) {
             root = null;
-            // for (Key key : preorder) {
-            //     if (root == null) root = new Node(key);   
-            //     else {
-
-            //     }
-            // }
             for (Key key : preorder) put(key);
         };
 
@@ -62,7 +56,7 @@ public class Web_2 {
 
         private void preorderTraversal(List<Key> queue, Node node) {
             if (node == null) return;
-            
+
             queue.add(node.key);
             preorderTraversal(queue, node.left);
             preorderTraversal(queue, node.right);
@@ -70,19 +64,21 @@ public class Web_2 {
 
         // perform preorder traversal for checking
         public Iterable<Key> preorderTraversal() {
-            Iterable<Key> queue = new ArrayList<>();
-            
+            List<Key> queue = new ArrayList<>();
+            preorderTraversal(queue, root);
             return queue;
         }
 
     }
     public static void main(String[] args) {
-        // ReconstructedBST<Integer> bst = new ReconstructedBST<>();
         int[] preorderArray = {100, 20, 10, 30, 200, 150, 300};
         ArrayList<Integer> preorder = new ArrayList<>();
         for (int x : preorderArray) preorder.add(x);
         System.out.println(preorder);
-
+        
+        ReconstructedBST<Integer> bst = new ReconstructedBST<>(preorder);
+        Iterable<Integer> bstPreorder = bst.preorderTraversal();
+        System.out.println(bstPreorder);
     }
 
 }
